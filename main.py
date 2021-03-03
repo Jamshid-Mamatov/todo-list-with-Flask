@@ -4,7 +4,7 @@ from tinydb import TinyDB,Query
 app=Flask(__name__)
 q=Query()
 db=TinyDB("database.json")
-# db.truncate()
+# "db.truncate()"
 
 @app.route("/creat")
 @app.route("/")
@@ -29,10 +29,12 @@ def get_form():
     task=r.get("task","")
     task_number=r.get("number","")
     task_state=r.get("state","False")
+
     task_dict={}
     task_dict["text"]=task
     task_dict["number"]=task_number
     task_dict["state"]=task_state
+
     task_list.append(task_dict)
     db.insert_multiple(task_list)
     
@@ -42,7 +44,9 @@ def get_form():
 @app.route("/remove")
 def remove():
     content="remove"
-    return render_template("home.html",content=content)
+    data=db.search(q.number>"0")
+    
+    return render_template("home.html",content=content,data=data)
 
 @app.route("/update")
 def update():
