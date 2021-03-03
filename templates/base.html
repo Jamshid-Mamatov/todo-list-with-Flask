@@ -3,15 +3,18 @@
 <head>
     <title>todo list</title>
 </head>
+{% block add %} {% endblock %}
 <body>
 
     <h1>todo list</h1>
+    <p><a href="/">todo list</a></p>
     <p><a href="/creat">creat</a></p>
    <p> <a href="/add">add</a></p>
    <p> <a href="/remove">remove</a></p>
    <p> <a href="/update">update</a></p>
    <p> <a href="/checking_task">checking task</a></p>
     <p><a href="clear">clear</a></p>
+    
 
     {% block body %} {% endblock %}
 </body>

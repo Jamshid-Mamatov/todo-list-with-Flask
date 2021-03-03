@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 from jinja2 import Template
 app=Flask(__name__)
 
@@ -14,7 +14,15 @@ def creat():
 @app.route("/add")
 def add ():
     content="add"
-    return render_template("home.html",content=content)
+
+    return render_template("add.html",content=content)
+
+@app.route("/form",methods=["POST","GET"])
+def get_form():
+    r=request.form
+    task=r.get("task","")
+
+    return task
 
 @app.route("/remove")
 def remove():
