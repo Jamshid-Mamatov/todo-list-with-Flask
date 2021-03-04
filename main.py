@@ -25,7 +25,7 @@ task_list=[]
 def get_form():
        
     r=request.form
-    
+    print(r)
     task=r.get("task","")
     task_number=r.get("number","")
     task_state=r.get("state","False")
@@ -43,10 +43,17 @@ def get_form():
 
 @app.route("/remove")
 def remove():
-    content="remove"
+    content="r"
     data=db.search(q.number>"0")
     
-    return render_template("home.html",content=content,data=data)
+    return render_template("remove.html",content=content,data=data)
+
+@app.route("/rem",methods=["POST"])
+def get_form_remove():
+    r=request.form
+    rem_num=r.get("remove_num",0)
+    db.remove(q.number==rem_num)
+    return "ok"
 
 @app.route("/update")
 def update():
