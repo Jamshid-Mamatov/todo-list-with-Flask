@@ -1,14 +1,1 @@
-{
-    "_default": {
-        "39": {
-            "text": "465",
-            "number": "2",
-            "state": "True"
-        },
-        "40": {
-            "text": "komp",
-            "number": "5",
-            "state": "False"
-        }
-    }
-}
+{"_default": {"39": {"text": "465", "number": "2", "state": "True"}, "42": {"text": "komp", "number": "5", "state": "True"}}}

@@ -84,15 +84,10 @@ def get_update():
     return "ok"
 
 
-
-@app.route("/checking_task")
-def checking_task():
-    content="checking_task"
-    return render_template("home.html",content=content)
-
 @app.route("/clear")
 def clear():
     content="clear"
-    return render_template("home.html",content=content)
+    db.truncate()
+    return db
 
 app.run(debug=True)
