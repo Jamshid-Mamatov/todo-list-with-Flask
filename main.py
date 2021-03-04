@@ -55,10 +55,35 @@ def get_form_remove():
     db.remove(q.number==rem_num)
     return "ok"
 
+
 @app.route("/update")
 def update():
     content="update"
-    return render_template("home.html",content=content)
+    return render_template("update.html",content=content)
+
+@app.route("/upd",methods=["POST"])
+def get_update():
+    r=request.form
+    
+    rem_task=r.get("task","")
+    print(rem_task)
+    db.remove(q.text==rem_task)
+
+    task=r.get("task","")
+    task_number=r.get("number","")
+    task_state=r.get("state","False")
+
+    task_dict={}
+    task_dict["text"]=task
+    task_dict["number"]=task_number
+    task_dict["state"]=task_state
+
+    
+    db.insert(task_dict)
+    
+    return "ok"
+
+
 
 @app.route("/checking_task")
 def checking_task():
